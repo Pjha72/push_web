@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button onclick="subscribe()">Subscribe</button>
+
+    <script>
+
+        addEventListener('load', async () =>{
+            let Sw = await navigator.serviceWorker.register('./Sw.js');
+            console.log(Sw);
+        })
+
+        async function subscribe(){
+            let Sw = await navigator.serviceWorker.ready;
+            let push = await Sw.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BHtESJfPHnErQmcEDEo2LfzNMOhq91F5BIMTG2kGhvqQkag_EfVg7ClT5vJEV5S2lD-Oy8U7jr2AQuv7BuHaIdk'
+            })
+            console.log(JSON.stringify(push));
+        }
+    </script>
+</body>
+</html>
