@@ -16,5 +16,5 @@ self.addEventListener('push', function(e) {
       { action: "Close", title: "Close", icon: "images/xmark.png" }
     ]
   };
-  e.waitUntil(self.registration.Notification('Hello World!', options));
+  e.waitUntil(self.registration.showNotification('Hello World!', options));
 });
